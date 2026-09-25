@@ -61,7 +61,8 @@ public static class CrapAnalyzer
                 Coverage = matched.Coverage,
                 CrapLoad = crapLoad,
                 IsCrappy = isCrappy,
-                Severity = severity
+                Severity = severity,
+                HasCoverage = matched.HasCoverage
             });
         }
 

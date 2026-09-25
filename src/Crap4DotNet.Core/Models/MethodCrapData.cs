@@ -12,4 +12,7 @@ public sealed record MethodCrapData
     public required double CrapLoad { get; init; }
     public required bool IsCrappy { get; init; }
     public required SeverityBand Severity { get; init; }
+
+    /// <summary>False when the coverage input has no entry for this method.</summary>
+    public bool HasCoverage { get; init; } = true;
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0" branch-rate="0" version="1.9" timestamp="0">
+  <packages>
+    <package name="Probe" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="Probe.Gate" filename="src/Probe/Gate.cs" line-rate="0" branch-rate="0" complexity="0">
+          <methods>
+            <method name="Stable" signature="(System.Int32)" line-rate="0" branch-rate="0" complexity="1" />
+            <method name="Covered" signature="(System.Int32)" line-rate="1" branch-rate="1" complexity="1" />
+            <method name="Improver" signature="(System.Int32)" line-rate="0" branch-rate="0" complexity="1" />
+            <method name="Crosser" signature="(System.Int32)" line-rate="0" branch-rate="0" complexity="1" />
+            <method name="OldMonster" signature="(System.Int32)" line-rate="0" branch-rate="0" complexity="1" />
+          </methods>
+        </class>
+        <class name="Probe.Shapes" filename="src/Probe/Shapes.cs" line-rate="0" branch-rate="0" complexity="0">
+          <methods>
+            <method name="Area" signature="(System.Int32)" line-rate="0" branch-rate="0" complexity="1" />
+            <method name="Area" signature="(System.Double)" line-rate="0" branch-rate="0" complexity="1" />
+          </methods>
+        </class>
+        <class name="Probe.Mover" filename="src/Probe/Old/Mover.cs" line-rate="0" branch-rate="0" complexity="0">
+          <methods>
+            <method name="Run" signature="(System.Int32)" line-rate="0" branch-rate="0" complexity="1" />
+          </methods>
+        </class>
+        <class name="Probe.Legacy" filename="src/Probe/Legacy.cs" line-rate="0" branch-rate="0" complexity="0">
+          <methods>
+            <method name="Gone" signature="()" line-rate="0" branch-rate="0" complexity="1" />
+          </methods>
+        </class>
+      </classes>
+    </package>
+    <package name="App1" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="Probe.App.Program" filename="src/App1/Program.cs" line-rate="0" branch-rate="0" complexity="0">
+          <methods>
+            <method name="Main" signature="(System.String[])" line-rate="0" branch-rate="0" complexity="1" />
+          </methods>
+        </class>
+      </classes>
+    </package>
+    <package name="App2" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="Probe.App.Program" filename="src/App2/Program.cs" line-rate="0" branch-rate="0" complexity="0">
+          <methods>
+            <method name="Main" signature="(System.String[])" line-rate="0.5" branch-rate="0.5" complexity="1" />
+          </methods>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

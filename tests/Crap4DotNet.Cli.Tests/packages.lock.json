@@ -158,18 +158,18 @@
           "xunit.extensibility.core": "[2.7.0]"
         }
       },
-      "Crap4DotNet": {
+      "crap4dotnet.core": {
+        "type": "Project",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.CSharp": "[4.9.2, )"
+        }
+      },
+      "Esonic.Crap4DotNet": {
         "type": "Project",
         "dependencies": {
           "Crap4DotNet.Core": "[1.0.0, )",
           "System.CommandLine": "[2.0.0-beta4.22272.1, )",
           "System.Text.Json": "[8.0.5, )"
-        }
-      },
-      "crap4dotnet.core": {
-        "type": "Project",
-        "dependencies": {
-          "Microsoft.CodeAnalysis.CSharp": "[4.9.2, )"
         }
       },
       "Microsoft.CodeAnalysis.CSharp": {

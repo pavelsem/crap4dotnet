@@ -142,6 +142,21 @@ The threshold comes from the first of these that sets it:
 2. `crap.threshold` in `crap4dotnet-config.json`
 3. the default, 30
 
+### `report` (fork: `Esonic.Crap4DotNet`)
+
+Score methods with the report and delta semantics of [`cargo crap`](https://github.com/minikin/cargo-crap) 0.5.0, so one consumer can read both tools.
+
+```
+dotnet-crap report <path> [--coverage <cobertura>...] [--baseline <report.json>]
+  [--missing pessimistic|optimistic|skip] [--epsilon 0.01] [--sort crap|file]
+  [--format json] [--output <path>] [--threshold 30]
+```
+
+- Output: `{version, entries[], warnings[]}`; each entry is `{file, function, line, cyclomatic, coverage, crap}`. `file` is absolute, resolved from the full path of `<path>`. `function` is the full signature (`Ns.Type.Method(int, string[])`). `coverage` is a percent, or `null` when the coverage input has no entry for the method; `--missing` then scores it at 0 % (default), at 100 %, or drops it.
+- With `--baseline` (a report from this command or from `cargo crap --format json`), each entry adds `baseline_crap`, `delta` and `status` (`new | regressed | improved | unchanged | moved`, `moved` with `previous_file`), and the document adds `removed[]`. Matching takes cargo-crap's three passes: exact `(file, function, line)`; same-name entries whose files are each other's unique longest common path suffix; name-only when the name is unmatched exactly once on each side. Paths compare with `\` normalized to `/`. A score change of at most `--epsilon` is `unchanged`.
+- Cobertura entries with one canonical key are deduplicated to the highest coverage.
+- Exit code: 0, 1 when any entry is above `--threshold`, 2 on an error. A command-line parse error (an unknown option or command) exits nonzero.
+
 ## Exit Codes
 
 | Code | Meaning |

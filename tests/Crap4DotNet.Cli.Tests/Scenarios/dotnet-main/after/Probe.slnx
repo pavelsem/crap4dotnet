@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/Probe/Probe.csproj" />
+  <Project Path="src/App1/App1.csproj" />
+  <Project Path="src/App2/App2.csproj" />
+</Solution>

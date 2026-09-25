@@ -8,6 +8,7 @@ using Xunit;
 
 namespace Crap4DotNet.Cli.Tests;
 
+[Collection("Console")]
 public sealed class IntegrationTests : IDisposable
 {
     private readonly string _tempDir;
@@ -59,14 +60,9 @@ public sealed class IntegrationTests : IDisposable
             Console.SetOut(stdoutWriter);
             Console.SetError(stderrWriter);
 
-            var rootCommand = new RootCommand("CRAP metric analysis tool for .NET")
-            {
-                AnalyzeCommand.Create(),
-                DiffCommand.Create()
-            };
-            rootCommand.Invoke(args);
+            var exitCode = Program.Run(args);
 
-            return (Environment.ExitCode, stdoutWriter.ToString(), stderrWriter.ToString());
+            return (exitCode, stdoutWriter.ToString(), stderrWriter.ToString());
         }
         finally
         {

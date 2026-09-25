@@ -19,4 +19,10 @@
     <ProjectReference Include="..\..\src\Crap4DotNet.Cli\Crap4DotNet.Cli.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Copies of agent-skills skills/workflow/scripts/tests/fixtures/crap/scenarios: data, not test code. -->
+    <Compile Remove="Scenarios\**" />
+    <None Include="Scenarios\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

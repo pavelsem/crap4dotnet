@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0" branch-rate="0" version="1.9" timestamp="0">
+  <packages>
+    <package name="Probe" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="Probe.Twins" filename="src/Probe/Twins.cs" line-rate="0" branch-rate="0" complexity="0">
+          <methods>
+            <method name="A" signature="(System.Int32)" line-rate="0" branch-rate="0" complexity="1" />
+            <method name="B" signature="(System.Int32)" line-rate="0" branch-rate="0" complexity="1" />
+          </methods>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

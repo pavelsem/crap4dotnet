@@ -26,7 +26,7 @@ public static class MethodCoverageMatcher
             var coverage = index.Find(complexity);
             if (coverage is null)
                 unmatchedNames.Add(complexity.Identity.FullName);
-            methods.Add(new MatchedMethod { Complexity = complexity, Coverage = coverage ?? 0.0 });
+            methods.Add(new MatchedMethod { Complexity = complexity, Coverage = coverage ?? 0.0, HasCoverage = coverage is not null });
         }
 
         return new MatchResult
@@ -82,7 +82,9 @@ public static class MethodCoverageMatcher
             if (_byFullKey.TryGetValue(fullKey, out var exact))
             {
                 _matchedFullKeys.Add(fullKey);
-                return exact[0].Coverage;
+                // One Ns.Type.Method declared in several files (e.g. Program.Main per app): use the method's own file.
+                var own = exact.Count > 1 ? exact.Find(e => PathEndsWith(complexity.Identity.FilePath, e.FileName)) : null;
+                return (own ?? exact[0]).Coverage;
             }
 
             if (_byRelaxedKey.TryGetValue(relaxedKey, out var relaxed)
@@ -245,6 +247,10 @@ public static class MethodCoverageMatcher
         return source.EndsWith(report, StringComparison.OrdinalIgnoreCase)
             || string.Equals(Path.GetFileName(source), Path.GetFileName(report), StringComparison.OrdinalIgnoreCase);
     }
+
+    private static bool PathEndsWith(string? sourcePath, string? coverageFile) =>
+        !string.IsNullOrEmpty(sourcePath) && !string.IsNullOrEmpty(coverageFile)
+        && ("/" + sourcePath.Replace('\\', '/')).EndsWith("/" + coverageFile.Replace('\\', '/').TrimStart('/'), StringComparison.OrdinalIgnoreCase);
 
     private static void AddToLookup(
         Dictionary<string, List<CoberturaMethodCoverage>> lookup,

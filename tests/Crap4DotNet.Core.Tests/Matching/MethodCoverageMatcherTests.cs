@@ -542,4 +542,22 @@ public sealed class MethodCoverageMatcherTests
 
         result.Methods.Single().Coverage.Should().Be(1.0);
     }
+
+    [Fact]
+    public void UnmatchedMethod_HasNoCoverage()
+    {
+        var result = MethodCoverageMatcher.Match([MakeComplexity("Run"), MakeComplexity("Other")], [MakeCoverage("Run")]);
+
+        result.Methods.Select(m => m.HasCoverage).Should().Equal(true, false);
+    }
+
+    [Fact]
+    public void SameMethodInTwoFiles_TakesItsOwnFilesCoverage()
+    {
+        var result = MethodCoverageMatcher.Match(
+            [MakeComplexity("Main", filePath: "C:/r/src/App1/Program.cs"), MakeComplexity("Main", filePath: "C:/r/src/App2/Program.cs")],
+            [MakeCoverage("Main", coverage: 0.0, fileName: "src/App1/Program.cs"), MakeCoverage("Main", coverage: 0.5, fileName: "src/App2/Program.cs")]);
+
+        result.Methods.Select(m => m.Coverage).Should().Equal(0.0, 0.5);
+    }
 }

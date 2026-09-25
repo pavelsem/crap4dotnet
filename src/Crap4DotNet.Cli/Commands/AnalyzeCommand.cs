@@ -262,7 +262,7 @@ internal static class AnalyzeCommand
         return coverageFiles;
     }
 
-    private static (List<string> files, string projectName) ResolveSourceFiles(string path)
+    internal static (List<string> files, string projectName) ResolveSourceFiles(string path)
     {
         if (!Path.Exists(path))
             throw new CrapCliException("SOURCE_NOT_FOUND",
